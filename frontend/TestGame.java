@@ -75,17 +75,17 @@ public class TestGame extends PApplet {
             image(toDraw, xPos - TILE_RADIUS, yPos - TILE_RADIUS, TILE_RADIUS*2, TILE_RADIUS*2);
             int tileDiceNumber = GameEngine.tilesNumber[tileNumber];
             toPrint = Integer.toString(tileDiceNumber);
-            if(tileDiceNumber == 6 || tileDiceNumber == 8){
-                fill(255, 0, 0);
-            }
-            else{
-                fill(0);
-            }
             for(int i = 0 ; i < scenario.boardState.vertexes.length; i++){
                 VertexNode node = scenario.boardState.vertexes[i];
                 if(node.city.getSecond() > 0){
                     drawSettlement(node.city.getFirst(), i);
                 }
+            }
+            if(tileDiceNumber == 6 || tileDiceNumber == 8){
+                fill(255, 0, 0);
+            }
+            else{
+                fill(0);
             }
             text(toPrint, xPos - 10, yPos);
             tileNumber++;
