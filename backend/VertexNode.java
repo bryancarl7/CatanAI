@@ -27,7 +27,7 @@ public class VertexNode {
      *      1 = backend.Player 1 road
      *      2 = backend.Player 2 road
      *      ...
-     * second = backend.VertexNode number
+     * second = VertexNode number
      */
     public ArrayList<MutablePair> listEdges = new ArrayList<>();
 
@@ -53,7 +53,7 @@ public class VertexNode {
                 return false;
             }
         }
-        return  true;
+        return true;
     }
 
     @Override

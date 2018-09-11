@@ -29,7 +29,7 @@ public class GameEngine {
             new int[]{15, 14, 25},
             new int[]{16, 17, 29},
             new int[]{17, 7, 16, 18},
-            new int[]{18, 17, 29, 29},
+            new int[]{18, 17, 18, 29},
             new int[]{19, 9, 18, 20},
             new int[]{20, 19, 21, 31},
             new int[]{21, 11, 20, 22},
