@@ -83,7 +83,7 @@ public class TestGame extends PApplet {
             }
             for(int i = 0 ; i < scenario.boardState.vertexes.length; i++){
                 VertexNode node = scenario.boardState.vertexes[i];
-                drawSettlement(node.city.getFirst(), node.city.getSecond());
+                drawSettlement(node.city.getFirst(), i);
             }
             text(toPrint, xPos - 10, yPos);
             tileNumber++;
