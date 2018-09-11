@@ -7,12 +7,11 @@ public class Line {
      *  0 = Red
      *  1 = Blue
      *  2 = Orange
-     *  3 = Black
+     *  3 = Green
      *
      */
 
-    // Todo: Change Player 4 color so road is not black
-    private int color = 3; // defaults to black
+    private int color = 4; // defaults to black
 
     private PApplet myPApplet;
     private Point p1, p2;
