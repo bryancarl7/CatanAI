@@ -40,7 +40,7 @@ public class VertexNode {
      *      1 = Settlement
      *      2 = City
      */
-    MutablePair city = new MutablePair();
+    public MutablePair city = new MutablePair();
 
     public VertexNode(){}
 

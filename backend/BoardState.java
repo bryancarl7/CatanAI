@@ -11,7 +11,7 @@ public class BoardState {
      * ...
      */
     ArrayList<Player> playerList = new ArrayList<>();
-    VertexNode[] vertexes = new VertexNode[54];
+    public VertexNode[] vertexes = new VertexNode[54];
     int[] devCardPool = new int[]{14, 5, 2, 2, 2};
     int playerTurn = 0;
     int robberTile;
