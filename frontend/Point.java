@@ -1,4 +1,4 @@
-package frontend;
+package CatanAI.frontend;
 
 public class Point {
 

@@ -1,4 +1,4 @@
-package backend;
+package CatanAI.backend;
 
 import java.util.ArrayList;
 

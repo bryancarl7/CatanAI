@@ -1,9 +1,9 @@
-package backend;
+package CatanAI.backend;
 
 import java.util.*;
 
-import frontend.Hexagon;
-import frontend.Point;
+import CatanAI.frontend.Hexagon;
+import CatanAI.frontend.Point;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -139,18 +139,17 @@ public class GameEngine extends PApplet {
         Collections.shuffle(playerOrder);
     }
 
-//    // Setup method used for testing game without window
-//    public void initGame(int playerSize){
-//        backend.BoardState.randomizeArray(tilesResource);
-//        backend.BoardState.randomizeArray(tilesNumber);
-//        boardState = getBoard();
-//        boardState.initBoard();
-//        boardState.initPlayers(playerSize);
-//        for(int i = 0; i < playerSize; i++){
-//            playerOrder.add(i);
-//        }
-//        Collections.shuffle(playerOrder);
-//    }
+    public void initGame(int playerSize){
+        BoardState.randomizeArray(tilesResource);
+        BoardState.randomizeArray(tilesNumber);
+        boardState = getBoard();
+        boardState.initBoard();
+        boardState.initPlayers(playerSize);
+        for(int i = 0; i < playerSize; i++){
+            playerOrder.add(i);
+        }
+        Collections.shuffle(playerOrder);
+    }
 
     // Todo: Complete game functionality
     public void draw(){
@@ -233,16 +232,16 @@ public class GameEngine extends PApplet {
         }
     }
 
-//
-//    public void playGame(){
-//        System.out.println("Settlement Phase Begin");
-//        settlementPhase();
-//        System.out.println("Settlement Phase End");
-//        while(!getWinner(boardState)){
-//           playRound();
-//        }
-//        System.out.println(toString());
-//    }
+
+    public void playGame(){
+        System.out.println("Settlement Phase Begin");
+        settlementPhase();
+        System.out.println("Settlement Phase End");
+        while(!getWinner(boardState)){
+           playRound();
+        }
+        System.out.println(toString());
+    }
 
     static public void nextPlayer(BoardState boardState){
         if(boardState.playerTurn == playerOrder.size() - 1){

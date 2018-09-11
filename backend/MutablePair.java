@@ -1,4 +1,4 @@
-package backend;
+package CatanAI.backend;
 
 public class MutablePair implements Comparable<MutablePair>{
     private int first;
