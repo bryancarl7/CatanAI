@@ -40,6 +40,8 @@ public class TestGame extends PApplet {
         background(255);
         drawTileLabel();
         drawHexagons();
+        drawSettlements();
+        updateRoads();
     }
     // Method to draw lable on each tile
     private void drawTileLabel(){
@@ -75,12 +77,6 @@ public class TestGame extends PApplet {
             image(toDraw, xPos - TILE_RADIUS, yPos - TILE_RADIUS, TILE_RADIUS*2, TILE_RADIUS*2);
             int tileDiceNumber = GameEngine.tilesNumber[tileNumber];
             toPrint = Integer.toString(tileDiceNumber);
-            for(int i = 0 ; i < scenario.boardState.vertexes.length; i++){
-                VertexNode node = scenario.boardState.vertexes[i];
-                if(node.city.getSecond() > 0){
-                    drawSettlement(node.city.getFirst(), i);
-                }
-            }
             if(tileDiceNumber == 6 || tileDiceNumber == 8){
                 fill(255, 0, 0);
             }
@@ -154,26 +150,39 @@ public class TestGame extends PApplet {
         temp[5].setSlot(slot6);
     }
 
+    private void updateRoads(){
+
+    }
+
     private void drawHexagons() {
         for (Hexagon tile : tiles) {
             tile.display();
         }
     }
 
-    private void drawSettlement(int playerNumber, int slot){
-        Point location = findPoint(slot);
-        switch(playerNumber){
-            case 0: fill(255, 0, 0); // Red
-                break;
-            case 1: fill(0, 0, 255); // Blue
-                break;
-            case 2: fill(244, 149, 66); // Orange
-                break;
-            case 3: fill(0, 0, 0); // Black
-                break;
-        }
+    private void drawSettlements() {
         int size = 20;
-        rect(location.getX() - (size/2), location.getY() - size/2, size, size);
+        for(int i = 0 ; i < scenario.boardState.vertexes.length; i++){
+            VertexNode node = scenario.boardState.vertexes[i];
+            if(node.city.getSecond() > 0) {
+                Point location = findPoint(i);
+                switch (node.city.getFirst()) {
+                    case 0:
+                        fill(255, 0, 0); // Red
+                        break;
+                    case 1:
+                        fill(0, 0, 255); // Blue
+                        break;
+                    case 2:
+                        fill(244, 149, 66); // Orange
+                        break;
+                    case 3:
+                        fill(34, 139, 34); // Green
+                        break;
+                }
+                rect(location.getX() - (size / 2), location.getY() - size / 2, size, size);
+            }
+        }
     }
 
     private Point findPoint(int slot){
@@ -186,5 +195,22 @@ public class TestGame extends PApplet {
             }
         }
         return null;
+    }
+
+    public void updateRoadColor(int playerNumber, int slot1, int slot2){
+        // May not be the most efficient, but not that many to look through (loops through ~114 times)
+        for(Hexagon tile: tiles){
+            for(Line line: tile.getEdges()){
+                int vertex1 = line.getP1().getSlot();
+                int vertex2 = line.getP2().getSlot();
+                if((vertex1 == slot1 && vertex2 == slot2) || (vertex1 == slot2 && vertex2 == slot1)){
+                    line.setColor(playerNumber); // The integer playerNumber represents their color
+                }
+            }
+        }
+    }
+
+    public Hexagon[] getTiles(){
+        return tiles;
     }
 }

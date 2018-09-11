@@ -151,9 +151,13 @@ public class Player {
     /*
      * Builds a road given two Vertexes
      */
+    // Todo: Save roadstate in something so frontEnd package can "see" change
     public void buildRoad(BoardState boardState, int startSlot, int endSlot){
         materials[1] -= 1;
         materials[2] -= 2;
+
+        //Update road color to represent change on UI
+        //updateRoadColor(playerNumber, startSlot, endSlot);
     }
 
     /*

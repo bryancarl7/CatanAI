@@ -4,18 +4,19 @@ import processing.core.PApplet;
 
 public class Line {
     /* Color Codes
-     *  0 = black
-     *  1 = blue
-     *  2 = red
-     *  3 = orange
-     *  4 = white (will probably change this)
+     *  0 = Red
+     *  1 = Blue
+     *  2 = Orange
+     *  3 = Black
+     *
      */
 
-    private int x1, y1, x2, y2;
-    private int color = 0;
+    // Todo: Change Player 4 color so road is not black
+    private int color = 3; // defaults to black
 
     private PApplet myPApplet;
     private Point p1, p2;
+
 
 
     public Line(Point p1, Point p2, PApplet myPApplet){
@@ -41,7 +42,17 @@ public class Line {
     }
 
     public void display(){
-        myPApplet.stroke(0);
+        switch(color){
+            case 0: myPApplet.stroke(255, 0, 0); // Red
+                    break;
+            case 1: myPApplet.stroke(0, 0, 255); // Blue
+                    break;
+            case 2: myPApplet.stroke(244, 149, 66); // Orange
+                    break;
+            case 3: myPApplet.stroke(34, 139, 34); // Green
+                    break;
+
+        }
         myPApplet.line(p1.getX(), p1.getY(), p2.getX(), p2.getY());
     }
 }
