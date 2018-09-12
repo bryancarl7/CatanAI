@@ -157,7 +157,7 @@ public class TestGame extends PApplet {
             VertexNode node = scenario.boardState.vertexes[i];
             for(CatanAI.backend.MutablePair pair : node.listEdges){
                 if(pair.getFirst() != 0){ // There is a road on edge
-                    updateRoadColor(pair.getFirst(), i, pair.getSecond());
+                    updateRoadColor(pair.getFirst()-1, i, pair.getSecond()); // Subtract 1 from playerNumber
                 }
             }
         }

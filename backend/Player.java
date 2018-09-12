@@ -158,13 +158,13 @@ public class Player {
 
         for(MutablePair pair: node1.listEdges){
             if(pair.getSecond() == endSlot && pair.getFirst() == 0){
-                pair.setFirst(playerNumber);
+                pair.setFirst(playerNumber+1);
             }
         }
 
         for(MutablePair pair: node2.listEdges){
             if(pair.getSecond() == startSlot && pair.getFirst() == 0){
-                pair.setFirst(playerNumber);
+                pair.setFirst(playerNumber+1);
             }
         }
 
