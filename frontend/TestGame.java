@@ -22,7 +22,6 @@ public class TestGame extends PApplet {
         // Create Window
         size(900, 700);
         // Load Images
-        //Todo: change filepath to relative
         desertTile = loadImage("CatanAI/resources/desert.png");
         brickTile = loadImage("CatanAI/resources/brick.png");
         forestTile = loadImage("CatanAI/resources/forest.png");
@@ -157,7 +156,7 @@ public class TestGame extends PApplet {
             VertexNode node = scenario.boardState.vertexes[i];
             for(CatanAI.backend.MutablePair pair : node.listEdges){
                 if(pair.getFirst() != -1){ // There is a road on edge
-                    updateRoadColor(pair.getFirst()-1, i, pair.getSecond()); // Subtract 1 from playerNumber
+                    updateRoadColor(pair.getFirst(), i, pair.getSecond());
                 }
             }
         }
