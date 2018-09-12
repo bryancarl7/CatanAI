@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Player {
-    // Red, Blue, Orange, Black
     public static int MATERIALS_LENGTH = 6;
     public static int BUILD_LENGTH = 3;
     public static int DEV_LENGTH = 5;
@@ -151,14 +150,26 @@ public class Player {
     /*
      * Builds a road given two Vertexes
      */
-    // Todo: Save roadstate in something so frontEnd package can "see" change
     public void buildRoad(BoardState boardState, int startSlot, int endSlot){
         materials[1] -= 1;
         materials[2] -= 2;
+        VertexNode node1 = boardState.vertexes[startSlot];
+        VertexNode node2 = boardState.vertexes[endSlot];
 
-        //Update road color to represent change on UI
-        //updateRoadColor(playerNumber, startSlot, endSlot);
+        for(MutablePair pair: node1.listEdges){
+            if(pair.getSecond() == endSlot && pair.getFirst() == 0){
+                pair.setFirst(playerNumber);
+            }
+        }
+
+        for(MutablePair pair: node2.listEdges){
+            if(pair.getSecond() == startSlot && pair.getFirst() == 0){
+                pair.setFirst(playerNumber);
+            }
+        }
+
     }
+
 
     /*
      * Draws a dev card from the bank and adds it to current player's hand

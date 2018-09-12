@@ -92,5 +92,15 @@ public class VertexNode {
         return blankNode;
     }
 
+    // Returns the slot of the first adjacent node that doesn't have a road already
+    public int getRandomAdjNode(){
+        for(MutablePair pair: listEdges){
+            if(pair.getFirst() == 0){
+                return pair.getSecond();
+            }
+        }
+        return -1; // No available adjacent roads
+    }
+
     //TODO----------------------------------------------------------------------
 }

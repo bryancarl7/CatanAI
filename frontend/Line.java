@@ -8,6 +8,7 @@ public class Line {
      *  1 = Blue
      *  2 = Orange
      *  3 = Green
+     *  else = black
      *
      */
 
@@ -43,15 +44,24 @@ public class Line {
     public void display(){
         switch(color){
             case 0: myPApplet.stroke(255, 0, 0); // Red
+                    myPApplet.strokeWeight(4);
                     break;
             case 1: myPApplet.stroke(0, 0, 255); // Blue
+                    myPApplet.strokeWeight(4);
                     break;
             case 2: myPApplet.stroke(244, 149, 66); // Orange
+                    myPApplet.strokeWeight(4);
                     break;
             case 3: myPApplet.stroke(34, 139, 34); // Green
+                    myPApplet.strokeWeight(4);
+                    break;
+            default: myPApplet.stroke(0); // Black
                     break;
 
         }
         myPApplet.line(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+        myPApplet.fill(0);
+        myPApplet.stroke(0);
+        myPApplet.strokeWeight(1);
     }
 }

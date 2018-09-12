@@ -99,7 +99,6 @@ public class GameEngine {
     static Random randomGen = new Random();
     public BoardState boardState;
 
-    int roundNumber = 0;
 
     public void initGame(int playerSize){
         BoardState.randomizeArray(tilesResource);

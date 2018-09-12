@@ -150,8 +150,17 @@ public class TestGame extends PApplet {
         temp[5].setSlot(slot6);
     }
 
+    // Method goes through each vertex's edges and changes color of edges where there is a road.
+    // Method does not draw the edges/road. drawHexagons() draws the edges/roads.
     private void updateRoads(){
-
+        for(int i = 0; i <scenario.boardState.vertexes.length; i++){ // i is also the Node #
+            VertexNode node = scenario.boardState.vertexes[i];
+            for(CatanAI.backend.MutablePair pair : node.listEdges){
+                if(pair.getFirst() != 0){ // There is a road on edge
+                    updateRoadColor(pair.getFirst(), i, pair.getSecond());
+                }
+            }
+        }
     }
 
     private void drawHexagons() {
@@ -160,6 +169,7 @@ public class TestGame extends PApplet {
         }
     }
 
+    // Method loops over all vertexes and draws a settlement with the player's color if it exists
     private void drawSettlements() {
         int size = 20;
         for(int i = 0 ; i < scenario.boardState.vertexes.length; i++){
@@ -181,6 +191,7 @@ public class TestGame extends PApplet {
                         break;
                 }
                 rect(location.getX() - (size / 2), location.getY() - size / 2, size, size);
+                fill(0);
             }
         }
     }
@@ -196,19 +207,20 @@ public class TestGame extends PApplet {
         }
         return null;
     }
-
-    public void updateRoadColor(int playerNumber, int slot1, int slot2){
+    // Todo: Fix Bug **Red roads not displaying**
+    private void updateRoadColor(int playerNumber, int slot1, int slot2){
         // May not be the most efficient, but not that many to look through (loops through ~114 times)
         for(Hexagon tile: tiles){
             for(Line line: tile.getEdges()){
                 int vertex1 = line.getP1().getSlot();
                 int vertex2 = line.getP2().getSlot();
-                if((vertex1 == slot1 && vertex2 == slot2) || (vertex1 == slot2 && vertex2 == slot1)){
+                if(((vertex1 == slot1) && (vertex2 == slot2)) || ((vertex1 == slot2) && (vertex2 == slot1))){
                     line.setColor(playerNumber); // The integer playerNumber represents their color
                 }
             }
         }
     }
+
 
     public Hexagon[] getTiles(){
         return tiles;

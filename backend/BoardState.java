@@ -101,12 +101,15 @@ public class BoardState {
         }
     }
 
-    public int startSettlement(int playerID){
+    public void startSettlement(int playerID){
         ArrayList<MutablePair> topSettles = topSettles();
         topSettles.sort(Comparator.comparing(MutablePair::getFirst));
         int slot = topSettles.get(topSettles.size() -1).getSecond();
+        int roadSlot = vertexes[slot].getRandomAdjNode();
         playerList.get(playerID).buildSettlement(this, slot, false);
-        return slot;
+        if(roadSlot != -1) {
+            playerList.get(playerID).buildRoad(this, slot, roadSlot);
+        }
     }
 
     public ArrayList<MutablePair> topSettles(){
