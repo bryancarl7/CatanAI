@@ -23,9 +23,10 @@ public class VertexNode {
 
     /*
      * first = road status
-     *      0 = no road
-     *      1 = backend.Player 1 road
-     *      2 = backend.Player 2 road
+     *      -1 = no road
+     *      0 = Player 0 road
+     *      1 = Player 1 road
+     *      2 = Player 2 road
      *      ...
      * second = VertexNode number
      */
@@ -33,8 +34,9 @@ public class VertexNode {
 
     /*
      * first = player
-     *      1 = backend.Player 1 city
-     *      2 = backend.Player 2 city
+     *      0 = Player 0 city
+     *      1 = Player 1 city
+     *      2 = Player 2 city
      *      ...
      * second = strength
      *      1 = Settlement
@@ -95,7 +97,7 @@ public class VertexNode {
     // Returns the slot of the first adjacent node that doesn't have a road already
     public int getRandomAdjNode(){
         for(MutablePair pair: listEdges){
-            if(pair.getFirst() == 0){
+            if(pair.getFirst() == -1){
                 return pair.getSecond();
             }
         }

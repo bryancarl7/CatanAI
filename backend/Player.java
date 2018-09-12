@@ -157,13 +157,13 @@ public class Player {
         VertexNode node2 = boardState.vertexes[endSlot];
 
         for(MutablePair pair: node1.listEdges){
-            if(pair.getSecond() == endSlot && pair.getFirst() == 0){
+            if(pair.getSecond() == endSlot && pair.getFirst() == -1){
                 pair.setFirst(playerNumber+1);
             }
         }
 
         for(MutablePair pair: node2.listEdges){
-            if(pair.getSecond() == startSlot && pair.getFirst() == 0){
+            if(pair.getSecond() == startSlot && pair.getFirst() == -1){
                 pair.setFirst(playerNumber+1);
             }
         }

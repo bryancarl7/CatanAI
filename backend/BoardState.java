@@ -40,7 +40,7 @@ public class BoardState {
             VertexNode currentVertex = vertexes[numberSet[0]];
             for(int i = 1; i < numberSet.length; i++){
                 MutablePair pair = GameEngine.getPair();
-                pair.set(0, numberSet[i]);
+                pair.set(-1, numberSet[i]);
                 currentVertex.listEdges.add(pair);
             }
         }
